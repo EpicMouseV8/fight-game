@@ -56,6 +56,10 @@ const player = new Fighter({
       imageSrc: './img/zuck/AttackZuck.png',
       framesMax: 3.2
     },
+    death: {
+      imageSrc: './img/zuck/DeathZuck.png',
+      framesMax: 6,
+    }
   },
   attackBox: {
     offset: {
@@ -101,6 +105,10 @@ const enemy = new Fighter({
       imageSrc: './img/elon/ElonIDLE.png',
       framesMax: 1
     },
+    death: {
+      imageSrc: './img/elon/DeathElon.png',
+      framesMax: 6
+    }
   },
   attackBox: {
     offset: {
@@ -147,10 +155,11 @@ function animate() {
   // player movement
 
   if (keys.a.pressed && player.lastKey === 'a') {
-    //console.log("hoho")
+    console.log("hoho")
     player.velocity.x = -5
     ////////////////////////////////
   } else if (keys.d.pressed && player.lastKey === 'd') {
+    console.log("hoho")
     player.velocity.x = 5
   } else {
     player.switchSprite('idle')
@@ -251,6 +260,7 @@ window.addEventListener('keydown', (event) => {
         break
       case ' ':
         player.attack()
+        player.lastKey = ' '
         break
     }
   }
@@ -272,7 +282,7 @@ window.addEventListener('keydown', (event) => {
         break
       case 'ArrowDown':
         enemy.attack()
-
+        enemy.lastKey = ' '
         break
     }
   }
