@@ -40,7 +40,7 @@ const player = new Fighter({
     x: 0,
     y: 0
   },
-  imageSrc: './img/elon/ElonIDLE.png',
+  imageSrc: './img/elon/ZuckIDLE.png',
   framesMax: 1,
   scale: 2.5,
   offset: {
@@ -49,33 +49,13 @@ const player = new Fighter({
   },
   sprites: {
     idle: {
-      imageSrc: './img/elon/ElonIDLE.png',
-      framesMax: 1
-    },
-    run: {
-      imageSrc: './img/elon/ElonIDLE.png',
-      framesMax: 1
-    },
-    jump: {
-      imageSrc: './img/elon/ElonIDLE.png',
-      framesMax: 1
-    },
-    fall: {
-      imageSrc: './img/elon/ElonIDLE.png',
+      imageSrc: './img/zuck/ZuckIDLE.png',
       framesMax: 1
     },
     attack1: {
-      imageSrc: './img/elon/AttackElon.png',
+      imageSrc: './img/zuck/AttackZuck.png',
       framesMax: 5
     },
-    takeHit: {
-      imageSrc: './img/elon/ElonIDLE.png',
-      framesMax: 1
-    },
-    death: {
-      imageSrc: './img/samuraiMack/Death.png',
-      framesMax: 6
-    }
   },
   attackBox: {
     offset: {
@@ -101,7 +81,7 @@ const enemy = new Fighter({
     x: -50,
     y: 0
   },
-  imageSrc: './img/kenji/Idle.png',
+  imageSrc: './img/elon/ElonIDLE.png',
   framesMax: 4,
   scale: 2.5,
   offset: {
@@ -110,33 +90,17 @@ const enemy = new Fighter({
   },
   sprites: {
     idle: {
-      imageSrc: './img/kenji/Idle.png',
-      framesMax: 4
-    },
-    run: {
-      imageSrc: './img/kenji/Run.png',
-      framesMax: 8
-    },
-    jump: {
-      imageSrc: './img/kenji/Jump.png',
-      framesMax: 2
-    },
-    fall: {
-      imageSrc: './img/kenji/Fall.png',
-      framesMax: 2
+      imageSrc: './img/elon/ElonIDLE.png',
+      framesMax: 1
     },
     attack1: {
-      imageSrc: './img/kenji/Attack1.png',
-      framesMax: 4
+      imageSrc: './img/elon/AttackElon.png',
+      framesMax: 2
     },
     takeHit: {
-      imageSrc: './img/kenji/Take hit.png',
-      framesMax: 3
+      imageSrc: './img/elon/ElonIDLE.png',
+      framesMax: 1
     },
-    death: {
-      imageSrc: './img/kenji/Death.png',
-      framesMax: 7
-    }
   },
   attackBox: {
     offset: {
@@ -148,7 +112,6 @@ const enemy = new Fighter({
   }
 })
 
-console.log(player)
 
 const keys = {
   a: {
@@ -185,27 +148,24 @@ function animate() {
 
   if (keys.a.pressed && player.lastKey === 'a') {
     player.velocity.x = -5
-    console.log(player.image);
     ////////////////////////////////
-    player.switchSprite('run')
   } else if (keys.d.pressed && player.lastKey === 'd') {
     player.velocity.x = 5
-    player.switchSprite('run')
   } else {
     player.switchSprite('idle')
   }
 
   // jumping
-  if (player.velocity.y < 0) {
-    player.switchSprite('jump')
-  } else if (player.velocity.y > 0) {
-    player.switchSprite('fall')
-  }
+  // if (player.velocity.y < 0) {
+  //   player.switchSprite('jump')
+  // } else if (player.velocity.y > 0) {
+  //   player.switchSprite('fall')
+  // }
 
   // Enemy movement
   if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft') {
     enemy.velocity.x = -5
-    enemy.switchSprite('run')
+    //enemy.switchSprite('run')
   } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight') {
     enemy.velocity.x = 5
     enemy.switchSprite('run')
@@ -227,7 +187,7 @@ function animate() {
       rectangle2: enemy
     }) &&
     player.isAttacking &&
-    player.framesCurrent === 4
+    player.framesCurrent === 2
   ) {
     enemy.takeHit()
     player.isAttacking = false
