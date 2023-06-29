@@ -56,8 +56,8 @@ const player = new Fighter({
       imageSrc: './img/zuck/AttackZuck.png',
       framesMax: 3.2
     },
-    death: {
-      imageSrc: './img/zuck/DeathZuck.png',
+    loss: {
+      imageSrc: './img/zuck/LossZuck.png',
       framesMax: 6,
     }
   },
@@ -105,8 +105,8 @@ const enemy = new Fighter({
       imageSrc: './img/elon/ElonIDLE.png',
       framesMax: 1
     },
-    death: {
-      imageSrc: './img/elon/DeathElon.png',
+    loss: {
+      imageSrc: './img/elon/LossElon.png',
       framesMax: 6
     }
   },

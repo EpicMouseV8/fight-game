@@ -141,13 +141,13 @@ class Fighter extends Sprite {
     this.health -= 20
 
     if (this.health <= 0) {
-      this.switchSprite('death')
+      this.switchSprite('loss')
     } else this.switchSprite('takeHit')
   }
 
   switchSprite(sprite) {
-    if (this.image === this.sprites.death.image) {
-      if (this.framesCurrent === this.sprites.death.framesMax - 1)
+    if (this.image === this.sprites.loss.image) {
+      if (this.framesCurrent === this.sprites.loss.framesMax - 1)
         this.dead = true
       return
     }
@@ -213,11 +213,11 @@ class Fighter extends Sprite {
       //   }
       //   break
 
-      case 'death':
-        if (this.image !== this.sprites.death.image) {
+      case 'loss':
+        if (this.image !== this.sprites.loss.image) {
           console.log("hehe")
-          this.image = this.sprites.death.image
-          this.framesMax = this.sprites.death.framesMax
+          this.image = this.sprites.loss.image
+          this.framesMax = this.sprites.loss.framesMax
           this.framesCurrent = 0
         }
         break
