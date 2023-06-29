@@ -29,8 +29,8 @@ const shop = new Sprite({
 
 const player = new Fighter({
   position: {
-    x: 0,
-    y: 0
+    x: 200,
+    y: 100
   },
   velocity: {
     x: 0,
@@ -40,12 +40,12 @@ const player = new Fighter({
     x: 0,
     y: 0
   },
-  imageSrc: './img/elon/ZuckIDLE.png',
+  imageSrc: './img/zuck/ZuckIDLE.png',
   framesMax: 1,
   scale: 2.5,
   offset: {
     x: 215,
-    y: 157
+    y: 167
   },
   sprites: {
     idle: {
@@ -54,7 +54,7 @@ const player = new Fighter({
     },
     attack1: {
       imageSrc: './img/zuck/AttackZuck.png',
-      framesMax: 5
+      framesMax: 3.2
     },
   },
   attackBox: {
@@ -69,7 +69,7 @@ const player = new Fighter({
 
 const enemy = new Fighter({
   position: {
-    x: 400,
+    x: 900,
     y: 100
   },
   velocity: {
@@ -82,7 +82,7 @@ const enemy = new Fighter({
     y: 0
   },
   imageSrc: './img/elon/ElonIDLE.png',
-  framesMax: 4,
+  framesMax: 1,
   scale: 2.5,
   offset: {
     x: 215,
@@ -95,7 +95,7 @@ const enemy = new Fighter({
     },
     attack1: {
       imageSrc: './img/elon/AttackElon.png',
-      framesMax: 2
+      framesMax: 3.3
     },
     takeHit: {
       imageSrc: './img/elon/ElonIDLE.png',
@@ -147,6 +147,7 @@ function animate() {
   // player movement
 
   if (keys.a.pressed && player.lastKey === 'a') {
+    //console.log("hoho")
     player.velocity.x = -5
     ////////////////////////////////
   } else if (keys.d.pressed && player.lastKey === 'd') {
