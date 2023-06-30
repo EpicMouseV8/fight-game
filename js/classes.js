@@ -35,7 +35,6 @@ class Sprite {
 
   animateFrames() {
     this.framesElapsed++
-
     if (this.framesElapsed % this.framesHold === 0) {
       if (this.framesCurrent < this.framesMax - 1) {
         this.framesCurrent++
@@ -142,7 +141,7 @@ class Fighter extends Sprite {
 
     if (this.health <= 0) {
       this.switchSprite('loss')
-    } else this.switchSprite('takeHit')
+    } else this.switchSprite('hit')
   }
 
   switchSprite(sprite) {
@@ -160,11 +159,13 @@ class Fighter extends Sprite {
       return
 
     // override when fighter gets hit
-    // if (
-    //   this.image === this.sprites.takeHit.image &&
-    //   this.framesCurrent < this.sprites.takeHit.framesMax - 1
-    // )
-    //   return
+    if (
+      this.image === this.sprites.hit.image &&
+      this.framesCurrent < this.sprites.hit.framesMax - 1
+    ) {
+      console.log("wesf");
+      return
+    }
 
     switch (sprite) {
       case 'idle':
@@ -174,28 +175,6 @@ class Fighter extends Sprite {
           this.framesCurrent = 0
         }
         break
-      // case 'run':
-      //   if (this.image !== this.sprites.run.image) {
-      //     this.image = this.sprites.run.image
-      //     this.framesMax = this.sprites.run.framesMax
-      //     this.framesCurrent = 0
-      //   }
-      //   break
-      // case 'jump':
-      //   if (this.image !== this.sprites.jump.image) {
-      //     this.image = this.sprites.jump.image
-      //     this.framesMax = this.sprites.jump.framesMax
-      //     this.framesCurrent = 0
-      //   }
-      //   break
-
-      // case 'fall':
-      //   if (this.image !== this.sprites.fall.image) {
-      //     this.image = this.sprites.fall.image
-      //     this.framesMax = this.sprites.fall.framesMax
-      //     this.framesCurrent = 0
-      //   }
-      //   break
 
       case 'attack1':
         if (this.image !== this.sprites.attack1.image) {
@@ -205,14 +184,6 @@ class Fighter extends Sprite {
         }
         break
 
-      // case 'takeHit':
-      //   if (this.image !== this.sprites.takeHit.image) {
-      //     this.image = this.sprites.takeHit.image
-      //     this.framesMax = this.sprites.takeHit.framesMax
-      //     this.framesCurrent = 0
-      //   }
-      //   break
-
       case 'loss':
         if (this.image !== this.sprites.loss.image) {
           console.log("hehe")
@@ -221,6 +192,15 @@ class Fighter extends Sprite {
           this.framesCurrent = 0
         }
         break
+
+        case 'hit':
+          if (this.image !== this.sprites.hit.image) {
+            this.image = this.sprites.hit.image
+            this.framesMax = this.sprites.hit.framesMax
+            this.framesCurrent = 0
+          }
+          break
+
     }
   }
 }

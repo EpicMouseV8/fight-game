@@ -59,11 +59,15 @@ const player = new Fighter({
     loss: {
       imageSrc: './img/zuck/LossZuck.png',
       framesMax: 6,
+    },
+    hit: {
+      imageSrc: './img/zuck/HitZuck.png',
+      framesMax: 3
     }
   },
   attackBox: {
     offset: {
-      x: 100,
+      x: 0,
       y: 50
     },
     width: 160,
@@ -108,6 +112,10 @@ const enemy = new Fighter({
     loss: {
       imageSrc: './img/elon/LossElon.png',
       framesMax: 6
+    },
+    hit: {
+      imageSrc: './img/elon/HitElon.png',
+      framesMax: 3
     }
   },
   attackBox: {
